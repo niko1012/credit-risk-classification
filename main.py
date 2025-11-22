@@ -1,10 +1,7 @@
 from src.data_loader import load_german_credit_data
 
 def main():
-    """
-    Main execution function for the Credit Risk Classification project.
-    Orchestrates data loading, processing, and model training.
-    """
+    
     print("--- Starting Credit Risk Project ---")
     
     # 1. Data Loading
@@ -12,7 +9,7 @@ def main():
         print("\n[Step 1] Loading Data...")
         df = load_german_credit_data()
         
-        # Quick check of class imbalance (Requirement from Francesco)
+        # Quick check of class imbalance 
         print("Data loaded successfully.")
         print(f"Total observations: {len(df)}")
         

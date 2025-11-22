@@ -2,18 +2,8 @@ import pandas as pd
 import os
 
 def load_german_credit_data(save_path: str = "data/german_credit_data.csv") -> pd.DataFrame:
-    """
-    Downloads the 'German Credit Data' from the UCI repository, 
-    adds column names, processes the target variable, saves it locally, 
-    and returns the DataFrame.
-
-    Args:
-        save_path (str): The file path where the cleaned CSV will be saved.
-
-    Returns:
-        pd.DataFrame: The dataframe containing the credit data.
-    """
-    # Official UCI dataset URL (raw text format separated by spaces)
+    
+    # Official UCI dataset URL 
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data"
 
     # Column names (as the raw file does not have a header)
@@ -29,7 +19,7 @@ def load_german_credit_data(save_path: str = "data/german_credit_data.csv") -> p
     print(f"Downloading data from {url}...")
     
     try:
-        # Read data (space-separated values)
+        # Read data 
         df = pd.read_csv(url, sep=' ', header=None, names=columns)
 
         # The target is 1 (Good) or 2 (Bad). 
@@ -39,7 +29,7 @@ def load_german_credit_data(save_path: str = "data/german_credit_data.csv") -> p
         # Create the data directory if it doesn't exist
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
-        # Save as a clean CSV
+        # Save as a CSV
         df.to_csv(save_path, index=False)
         print(f"Data successfully saved to {save_path}")
 
