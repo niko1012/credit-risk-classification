@@ -1,48 +1,50 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
+from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline as ImbPipeline
 import numpy as np
 
 def train_models(X_train, y_train):
     """
-    Initializes and trains the three required models:
-    1. Logistic Regression (Baseline)
-    2. Random Forest (Ensemble)
-    3. XGBoost (Gradient Boosting)
-    
-    Handles class imbalance using 'class_weight' parameters
+    Initializes and trains the models, including handling class imbalance via:
+    1. Class Weights (for LR, RF, XGB)
+    2. SMOTE (Synthetic Minority Over-sampling Technique)
     """
     print("\n[Model Training] Initializing models...")
     
     models = {}
 
-    # --- Model 1: Logistic Regression (Baseline) ---
-    # class_weight='balanced': Automatically adjusts weights inversely proportional to class frequencies
-    # max_iter=1000: Ensures the solver converges
-    print("Training Logistic Regression...")
-    lr = LogisticRegression(class_weight='balanced', random_state=42, max_iter=1000)
-    lr.fit(X_train, y_train)
-    models['Logistic Regression'] = lr
+    # --- Model 1: Logistic Regression (Method A: Class Weights) ---
+    print("Training Logistic Regression (Balanced Weights)...")
+    lr_balanced = LogisticRegression(class_weight='balanced', random_state=42, max_iter=1000)
+    lr_balanced.fit(X_train, y_train)
+    models['Logistic Regression (Balanced)'] = lr_balanced
 
-    # --- Model 2: Random Forest ---
-    # class_weight='balanced': Penalizes mistakes on the minority class (defaults) more heavily
-    # n_estimators=100: Standard number of trees
+    # --- Model 2: Logistic Regression (Method B: SMOTE) ---
+    print("Training Logistic Regression (SMOTE)...")
+    pipeline_smote = ImbPipeline([
+        ('smote', SMOTE(random_state=42)),
+        ('model', LogisticRegression(random_state=42, max_iter=1000))
+    ])
+    pipeline_smote.fit(X_train, y_train)
+    models['Logistic Regression (SMOTE)'] = pipeline_smote
+
+    # --- Model 3: Random Forest ---
     print("Training Random Forest...")
     rf = RandomForestClassifier(class_weight='balanced', n_estimators=100, random_state=42)
     rf.fit(X_train, y_train)
     models['Random Forest'] = rf
 
-    # --- Model 3: XGBoost ---
-    # scale_pos_weight: The XGBoost equivalent of class_weight
-    # Calculation: count(negative) / count(positive) ~ 700/300 = 2.33
-    # max_depth=3: Limits tree depth to prevent OVERFITTING
+    # --- Model 4: XGBoost ---
     print("Training XGBoost...")
+    # Calculate scale_pos_weight for XGBoost
     scale_pos_weight = (y_train == 0).sum() / (y_train == 1).sum()
     
     xgb = XGBClassifier(
         scale_pos_weight=scale_pos_weight,
         n_estimators=100,
-        max_depth=3,  # Conservative depth to avoid overfitting on small data (1000 rows)
+        max_depth=3,
         learning_rate=0.1,
         random_state=42,
         eval_metric='logloss'
