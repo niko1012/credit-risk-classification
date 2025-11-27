@@ -6,3 +6,6 @@ seaborn
 xgboost
 imbalanced-learn
 requests
+types-requests
+pytest
+pytest-cov
