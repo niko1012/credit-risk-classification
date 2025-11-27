@@ -1,2 +1,5 @@
 Model,ROC-AUC
-Test Model,0.7333333333333334
+Logistic Regression (Balanced),0.8030952380952381
+Logistic Regression (SMOTE),0.8008333333333333
+Random Forest,0.79
+XGBoost,0.7796428571428572

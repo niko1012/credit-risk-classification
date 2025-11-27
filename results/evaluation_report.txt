@@ -1,15 +1,54 @@
 --- Detailed Classification Report ---
 
---- Evaluating Test Model ---
+--- Evaluating Logistic Regression (Balanced) ---
               precision    recall  f1-score   support
 
-           0       0.75      1.00      0.86        15
-           1       0.00      0.00      0.00         5
+           0       0.89      0.73      0.80       140
+           1       0.56      0.80      0.66        60
 
-    accuracy                           0.75        20
-   macro avg       0.38      0.50      0.43        20
-weighted avg       0.56      0.75      0.64        20
+    accuracy                           0.75       200
+   macro avg       0.73      0.76      0.73       200
+weighted avg       0.79      0.75      0.76       200
 
-ROC-AUC Score: 0.7333
+ROC-AUC Score: 0.8031
+------------------------------------------------------------
+
+--- Evaluating Logistic Regression (SMOTE) ---
+              precision    recall  f1-score   support
+
+           0       0.89      0.74      0.81       140
+           1       0.57      0.78      0.66        60
+
+    accuracy                           0.76       200
+   macro avg       0.73      0.76      0.73       200
+weighted avg       0.79      0.76      0.76       200
+
+ROC-AUC Score: 0.8008
+------------------------------------------------------------
+
+--- Evaluating Random Forest ---
+              precision    recall  f1-score   support
+
+           0       0.77      0.94      0.85       140
+           1       0.72      0.35      0.47        60
+
+    accuracy                           0.77       200
+   macro avg       0.75      0.65      0.66       200
+weighted avg       0.76      0.77      0.74       200
+
+ROC-AUC Score: 0.7900
+------------------------------------------------------------
+
+--- Evaluating XGBoost ---
+              precision    recall  f1-score   support
+
+           0       0.84      0.71      0.77       140
+           1       0.50      0.68      0.58        60
+
+    accuracy                           0.70       200
+   macro avg       0.67      0.70      0.67       200
+weighted avg       0.74      0.70      0.71       200
+
+ROC-AUC Score: 0.7796
 ------------------------------------------------------------
 
