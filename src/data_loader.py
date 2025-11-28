@@ -2,7 +2,22 @@ import pandas as pd
 import os
 
 def load_german_credit_data(save_path: str = "data/german_credit_data.csv") -> pd.DataFrame:
+    """
+    Downloads the 'German Credit Data' from the UCI repository, adds column names, 
+    processes the target variable, saves it locally, and returns the DataFrame
+
+    Args:
+        save_path (str): The file path where the cleaned CSV will be saved.
+                         Defaults to "data/german_credit_data.csv"
+
+    Returns:
+        pd.DataFrame: The dataframe containing the cleaned credit data with 
+                      1000 observations and 21 columns
     
+    Raises:
+        Exception: If the URL is unreachable or parsing fails
+    """
+
     # Official UCI dataset URL 
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data"
 

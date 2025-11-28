@@ -4,7 +4,19 @@ from src.models import train_models
 from src.evaluation import evaluate_models 
 
 def main():
-    
+    """
+    Main entry point for the Credit Risk Classification project
+
+    Orchestrates the entire data science pipeline:
+    1. Data Loading 
+    2. Preprocessing (Encoding, Split, Scaling)
+    3. Model Training (LR, RF, XGB, SMOTE)
+    4. Evaluation (Metrics generation and Reporting)
+
+    It includes error handling to ensure the pipeline fails gracefully with 
+    informative messages
+    """
+
     print("--- Starting Credit Risk Project ---")
     
     # 1. Data Loading

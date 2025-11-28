@@ -5,8 +5,13 @@ from src.models import train_models
 
 def test_train_models():
     """
-    Tests if the model training pipeline works correctly.
-    It checks if the function returns a dictionary containing the 4 expected models.
+    Unit test for the model training module
+
+    Verifies that:
+    1. The function returns a dictionary
+    2. The dictionary contains exactly 4 models (LR Balanced, LR SMOTE, RF, XGB)
+    3. All expected model keys are present
+    4. Each model object is valid and has a 'predict' method (meaning it is fitted)
     """
     # 1. Create dummy training data 
     X_train = pd.DataFrame(np.random.rand(50, 10), columns=[f"col_{i}" for i in range(10)])

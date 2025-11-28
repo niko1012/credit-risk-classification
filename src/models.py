@@ -7,9 +7,22 @@ import numpy as np
 
 def train_models(X_train, y_train):
     """
-    Initializes and trains the models, including handling class imbalance via:
-    1. Class Weights (for LR, RF, XGB)
-    2. SMOTE (Synthetic Minority Over-sampling Technique)
+    Initializes and trains four comparative classification models
+
+    This function addresses the class imbalance problem using two distinct strategies:
+    1. Class Weights: Used for Logistic Regression (Balanced) and Random Forest
+    2. SMOTE (Synthetic Minority Over-sampling Technique): Used in a pipeline for the second Logistic Regression model
+    
+    It also trains an XGBoost model with conservative hyperparameters to prevent overfitting 
+    on this small dataset
+
+    Args:
+        X_train (pd.DataFrame): Scaled training features
+        y_train (pd.Series): Training labels
+
+    Returns:
+        dict: A dictionary where keys are model names (str) and values are the 
+              trained scikit-learn/xgboost model objects
     """
     print("\n[Model Training] Initializing models...")
     

@@ -5,7 +5,14 @@ from src.data_loader import load_german_credit_data
 
 def test_load_german_credit_data():
     """
-    Tests if the data loader returns a non-empty DataFrame with the correct columns.
+    Unit test for the data loader module.
+
+    Verifies that:
+    1. The returned object is a pandas DataFrame
+    2. The DataFrame is not empty
+    3. The shape corresponds to the expected dataset size (1000 rows)
+    4. Essential columns (including the Target) are present
+    5. The Target variable contains only expected binary values (0 and 1)
     """
     
     df = load_german_credit_data()

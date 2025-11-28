@@ -5,10 +5,13 @@ from src.preprocessing import preprocess_and_split
 
 def test_preprocess_and_split():
     """
-    Tests the preprocessing pipeline:
-    - Checks shape of outputs
-    - Checks if scaling was applied (mean approx 0, std approx 1)
-    - Checks if split ratio is correct
+    Unit test for the preprocessing module.
+
+    Verifies that:
+    1. The output types are correct (DataFrames/Series)
+    2. The split ratio is respected (e.g., 80 rows for train, 20 for test on dummy data)
+    3. Categorical variables are correctly One-Hot Encoded (column count increases)
+    4. StandardScaler is correctly applied (resulting mean is approx 0, std approx 1)
     """
     # Create a dummy dataset
     data = {

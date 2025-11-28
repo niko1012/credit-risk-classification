@@ -30,24 +30,25 @@ credit-risk-classification/
 ├── README.md               # Project documentation
 ├── requirements.txt        # Python dependencies
 └── setup.py                # Package setup file
+```
 
 ## 3. Setup & Installation
 This project is designed to be reproducible. Follow these steps to set up the environment:
 
-### 1. Clone the repository:
+1. Clone the repository:
 
         ```python
         git clone [https://github.com/niko1012/credit-risk-classification.git](https://github.com/niko1012/credit-risk-classification.git)
         cd credit-risk-classification
         ```
 
-### 2. Install dependencies: It is recommended to use a virtual environment.
+2. Install dependencies: It is recommended to use a virtual environment.
 
         ```python
         pip install -r requirements.txt
         ```
 
-### 3. Install the project in editable mode: (Required for imports in tests to work correctly)
+3. Install the project in editable mode: (Required for imports in tests to work correctly)
 
         ```python
         pip install -e .
@@ -55,7 +56,7 @@ This project is designed to be reproducible. Follow these steps to set up the en
 
 ## 4. Usage
 
-**Run the Main Pipeline**
+1. Run the Main Pipeline
 
 To run the full workflow (Load Data -> Preprocess -> Train -> Evaluate):
 
@@ -65,9 +66,9 @@ To run the full workflow (Load Data -> Preprocess -> Train -> Evaluate):
 
 **Expected Output:** The script will download the data, train 4 models, print classification reports to the terminal, and save all figures/metrics to the results/ folder.
 
-**Run Tests**
+2. Run Tests
 
-To verify the code integrity and check coverage (current coverage: 92%):
+To verify the code integrity and check coverage:
 
         ```python
         pytest --cov=src

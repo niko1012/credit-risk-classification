@@ -6,9 +6,23 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 
 def evaluate_models(models: dict, X_test, y_test):
     """
-    Evaluates trained models using metrics suited for imbalanced data.
-    Generates classification reports, confusion matrices, ROC Curves,
-    and saves a full textual report.
+    Evaluates trained models using metrics suited for imbalanced data and saves results
+
+    For each model, this function:
+    1. Generates predictions and probabilities
+    2. Prints a classification report (Precision, Recall, F1-Score)
+    3. Calculates the ROC-AUC score
+    4. Plots and saves the Confusion Matrix and ROC Curve to the 'results/' directory
+    5. Exports a full textual report to 'results/evaluation_report.txt'
+
+    Args:
+        models (dict): Dictionary of trained models {'name': model_object}
+        X_test (pd.DataFrame): Scaled test features
+        y_test (pd.Series): True test labels
+
+    Returns:
+        pd.DataFrame: A summary DataFrame containing the Model names and their 
+                      corresponding ROC-AUC scores, sorted for comparison
     """
     print("\n[Evaluation] Starting model evaluation...")
     

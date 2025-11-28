@@ -7,7 +7,13 @@ from src.evaluation import evaluate_models
 
 def test_evaluate_models():
     """
-    Tests if the evaluation function runs correctly and returns a summary DataFrame.
+    Integration test for the evaluation module
+
+    Verifies that:
+    1. The function runs without errors on dummy data and models
+    2. It returns a summary DataFrame with the correct columns ('Model', 'ROC-AUC')
+    3. The generated ROC-AUC score is a valid float between 0.0 and 1.0
+    4. It handles the saving of results to the disk without crashing
     """
     # 1. Setup: Create dummy test data
     X_test = pd.DataFrame(np.random.rand(20, 5), columns=[f"col_{i}" for i in range(5)])

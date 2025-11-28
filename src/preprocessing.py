@@ -4,14 +4,29 @@ from sklearn.preprocessing import StandardScaler
 
 def preprocess_and_split(df: pd.DataFrame, target_col: str = 'Target', test_size: float = 0.2, random_state: int = 42):
     """
-    Performs data preprocessing, encoding, scaling, and splitting
-    
+    Performs the full data preparation pipeline: splitting, encoding, and scaling
+
     Steps:
-    1. Separates Target and Features
-    2. One-Hot Encoding for categorical variables
-    3. Stratified Train-Test Split
-    4. Standard Scaling (Fit on Train, Transform on Test) to fix convergence issues
+    1. Separates features (X) and target (y)
+    2. Encodes categorical variables using One-Hot Encoding (pd.get_dummies)
+    3. Performs a Stratified Train-Test Split to maintain the class balance 
+    4. Applies StandardScaler to normalize features (fit on train, transform on test)
+       to ensure convergence of linear models.
+
+    Args:
+        df (pd.DataFrame): The full dataset loaded from the data loader
+        target_col (str): The name of the target column to predict. Defaults to 'Target'
+        test_size (float): The proportion of the dataset to include in the test split. Defaults to 0.2
+        random_state (int): Seed used by the random number generator for reproducibility
+
+    Returns:
+        tuple: A tuple containing four elements:
+               - X_train_scaled (pd.DataFrame): Scaled training features
+               - X_test_scaled (pd.DataFrame): Scaled testing features
+               - y_train (pd.Series): Training labels
+               - y_test (pd.Series): Testing labels
     """
+
     print("\n[Preprocessing] Starting data preparation...")
 
     # 1. Separate Features and Target
