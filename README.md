@@ -75,14 +75,15 @@ To verify the code integrity and check coverage:
         ```
 
 ## 5. Results & Findings
-We compared four approaches. The evaluation focused on ROC-AUC (overall performance) and Recall (ability to detect defaults).
+I compared four approaches, focusing on ROC-AUC (overall performance) and Recall (ability to detect defaults).
 
-| Model                          | ROC-AUC | Key Observation                                           |
-+--------------------------------+---------+-----------------------------------------------------------+
-| Logistic Regression (Balanced) | 0.803   | Best Performer. Best balance between recall and precision |
-| Logistic Regression (SMOTE)    | 0.801   | Very similar performance to the balanced weights approach |
-| Random Forest                  | 0.790   | High accuracy but poor recall (missed many defaults)      |
-| XGBoost                        | 0.780   | Signs of overfitting despite regularization parameters    |
+The Logistic Regression (Balanced) was the best performer with a ROC-AUC of 0.803, offering the best balance between recall and precision.
+
+The Logistic Regression (SMOTE) showed very similar performance to the balanced weights approach, achieving a ROC-AUC of 0.801.
+
+The Random Forest model reached a ROC-AUC of 0.790; while it had high accuracy, it suffered from poor recall and missed many defaults.
+
+The XGBoost model achieved a ROC-AUC of 0.780, showing signs of overfitting despite the use of regularization parameters.
 
 **Key Takeaway**
 Contrary to expectations, the simpler Logistic Regression outperformed complex ensemble methods (Random Forest, XGBoost) on this small dataset (1000 observations).
@@ -93,9 +94,9 @@ Contrary to expectations, the simpler Logistic Regression outperformed complex e
 - Python 3.10+
 - pandas
 - numpy
-- scikit-learn
+- scikit-learn==1.3.2
 - xgboost
-- imbalanced-learn
+- imbalanced-learn==0.11.0
 - matplotlib
 - seaborn
 - requests
