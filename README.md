@@ -38,7 +38,7 @@ This project is designed to be reproducible. Follow these steps to set up the en
 1. Clone the repository:
 
         ```bash
-        git clone [https://github.com/niko1012/credit-risk-classification.git](https://github.com/niko1012/credit-risk-classification.git)
+        git clone https://github.com/niko1012/credit-risk-classification.git
         cd credit-risk-classification
         ```
 
