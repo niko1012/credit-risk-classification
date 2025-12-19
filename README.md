@@ -77,14 +77,12 @@ To verify the code integrity and check coverage:
 ## 5. Results & Findings
 We compared four approaches. The evaluation focused on ROC-AUC (overall performance) and Recall (ability to detect defaults).
 
-
 | Model                          | ROC-AUC | Key Observation                                           |
 +--------------------------------+---------+-----------------------------------------------------------+
 | Logistic Regression (Balanced) | 0.803   | Best Performer. Best balance between recall and precision |
 | Logistic Regression (SMOTE)    | 0.801   | Very similar performance to the balanced weights approach |
 | Random Forest                  | 0.790   | High accuracy but poor recall (missed many defaults)      |
 | XGBoost                        | 0.780   | Signs of overfitting despite regularization parameters    |
-
 
 **Key Takeaway**
 Contrary to expectations, the simpler Logistic Regression outperformed complex ensemble methods (Random Forest, XGBoost) on this small dataset (1000 observations).
