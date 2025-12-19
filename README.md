@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 
 ## 1. Research Question
 **"Which classification model performs best for predicting loan defaults on the German Credit dataset: Logistic Regression, Random Forest, or XGBoost?"**
@@ -37,20 +37,20 @@ This project is designed to be reproducible. Follow these steps to set up the en
 
 1. Clone the repository:
 
-        ```python
+        ```bash
         git clone [https://github.com/niko1012/credit-risk-classification.git](https://github.com/niko1012/credit-risk-classification.git)
         cd credit-risk-classification
         ```
 
 2. Install dependencies: It is recommended to use a virtual environment.
 
-        ```python
+        ```bash 
         pip install -r requirements.txt
         ```
 
 3. Install the project in editable mode: (Required for imports in tests to work correctly)
 
-        ```python
+        ```bash
         pip install -e .
         ```
 
@@ -60,7 +60,7 @@ This project is designed to be reproducible. Follow these steps to set up the en
 
 To run the full workflow (Load Data -> Preprocess -> Train -> Evaluate):
 
-        ```python
+        ```bash
         python main.py
         ```
 
@@ -70,21 +70,21 @@ To run the full workflow (Load Data -> Preprocess -> Train -> Evaluate):
 
 To verify the code integrity and check coverage:
 
-        ```python
+        ```bash
         pytest --cov=src
         ```
 
 ## 5. Results & Findings
 We compared four approaches. The evaluation focused on ROC-AUC (overall performance) and Recall (ability to detect defaults).
 
-+--------------------------------+---------+--------------------------------------------------------------+
-| Model                          | ROC-AUC | Key Observation                                              |
-+--------------------------------+---------+--------------------------------------------------------------+
-| Logistic Regression (Balanced) | 0.803   | Best Performer. Best balance between recall and precision.   |
-| Logistic Regression (SMOTE)    | 0.801   | Very similar performance to the balanced weights approach.   |
-| Random Forest                  | 0.790   | High accuracy but poor recall (missed many defaults).        |
-| XGBoost                        | 0.780   | Signs of overfitting despite regularization parameters.      |
-+--------------------------------+---------+--------------------------------------------------------------+
+
+| Model                          | ROC-AUC | Key Observation                                           |
++--------------------------------+---------+-----------------------------------------------------------+
+| Logistic Regression (Balanced) | 0.803   | Best Performer. Best balance between recall and precision |
+| Logistic Regression (SMOTE)    | 0.801   | Very similar performance to the balanced weights approach |
+| Random Forest                  | 0.790   | High accuracy but poor recall (missed many defaults)      |
+| XGBoost                        | 0.780   | Signs of overfitting despite regularization parameters    |
+
 
 **Key Takeaway**
 Contrary to expectations, the simpler Logistic Regression outperformed complex ensemble methods (Random Forest, XGBoost) on this small dataset (1000 observations).

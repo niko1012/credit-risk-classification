@@ -9,7 +9,7 @@ def preprocess_and_split(df: pd.DataFrame, target_col: str = 'Target', test_size
     Steps:
     1. Separates features (X) and target (y)
     2. Encodes categorical variables using One-Hot Encoding (pd.get_dummies)
-    3. Performs a Stratified Train-Test Split to maintain the class balance 
+    3. Performs a Stratified Train-Test Split to maintain the class balance (70/30) 
     4. Applies StandardScaler to normalize features (fit on train, transform on test)
        to ensure convergence of linear models.
 
