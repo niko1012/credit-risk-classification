@@ -28,6 +28,7 @@ credit-risk-classification/
 ├── main.py                 # Main entry point for the pipeline
 ├── PROPOSAL.md             # Initial project proposal
 ├── README.md               # Project documentation
+├── AI_USAGE.MD             # AI Tools Usage Disclosure
 ├── project_report.pdf      # Research report
 ├── requirements.txt        # Python dependencies
 └── setup.py                # Package setup file
