@@ -96,9 +96,9 @@ Contrary to expectations, the simpler Logistic Regression outperformed complex e
 - Python 3.10+
 - pandas
 - numpy
-- scikit-learn==1.3.2
+- scikit-learn
 - xgboost
-- imbalanced-learn==0.11.0
+- imbalanced-learn
 - matplotlib
 - seaborn
 - requests
